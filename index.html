@@ -1446,7 +1446,21 @@ section.services { padding-top: 120px; padding-bottom: 88px; }
     min-height: calc(100svh - 24px);
     height: calc(100svh - 24px);
   }
-  .hero-headline { font-size: clamp(36px, 10vw, 58px); }
+  .hero-headline { font-size: clamp(36px, 10vw, 58px); text-align: center; }
+  .hero-headline .hero-line { text-align: center; }
+  .hero-tag {
+    justify-content: center;
+    padding-left: 0;
+    gap: 8px 11px;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+  }
+  /* Drop the divider before Nonprofit; put Nonprofit on its own centered row */
+  .hero-tag > span:nth-child(6) { display: none; }
+  .hero-tag > span:last-child {
+    flex: 0 0 100%;
+    text-align: center;
+  }
   .hero-scroll { top: 88px; bottom: auto; right: 16px; }
   .hero-arrow { width: 32px; height: 32px; }
   .hero-arrow-prev { left: 8px; }
@@ -1464,8 +1478,19 @@ section.services { padding-top: 120px; padding-bottom: 88px; }
 
   /* Work accordion (stacks below 640px — see block further down) */
   .work { padding: 48px 0 0; }
-  .work-header { flex-direction: column; gap: 14px; padding: 0 20px; margin-bottom: 48px; }
-  .work-view-all { position: static; transform: none; }
+  .work-header {
+    flex-direction: column;
+    gap: 0;
+    padding: 0 20px;
+    margin-bottom: 48px;
+    align-items: center;
+  }
+  .work-view-all { display: none; }
+  .work-title {
+    display: inline-block;
+    border-bottom: 1px solid var(--border-strong);
+    padding-bottom: 4px;
+  }
   .work-accordion { height: 560px; }
 
   /* Services */
@@ -1544,11 +1569,25 @@ section.services { padding-top: 120px; padding-bottom: 88px; }
   .work-panel.active {
     flex: 0 0 82vw;
     height: 100%;
+    max-height: 100%;
+    align-self: stretch;
     scroll-snap-align: center;
+    overflow: hidden;
   }
-  .work-panel-img { width: 100%; left: 0; transform: none; }
+  .work-panel-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    transform: none;
+  }
   .work-panel-img img,
   .work-panel.active .work-panel-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
     filter: brightness(0.8) saturate(1);
   }
   .work-panel-label { display: none; }
@@ -1596,13 +1635,12 @@ section.services { padding-top: 120px; padding-bottom: 88px; }
    RESPONSIVE — 480px (small mobile)
 ═══════════════════════════════════ */
 @media (max-width: 480px) {
-  .hero-headline { font-size: clamp(32px, 11vw, 48px); }
+  .hero-headline { font-size: clamp(32px, 11vw, 48px); text-align: center; }
   .who-headline { font-size: clamp(32px, 10vw, 48px); }
   .stats-inner { gap: 12px 28px; }
-  .work-panel { height: 58vh; min-height: 400px; }
   .work-accordion { padding: 0 5vw; }
   .work-panel,
-  .work-panel.active { flex: 0 0 88vw; }
+  .work-panel.active { flex: 0 0 88vw; height: 100%; }
   .connect-headline { font-size: clamp(38px, 13vw, 56px); }
   .section-label { font-size: 16px; }
 }
