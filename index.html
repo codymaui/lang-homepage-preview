@@ -454,9 +454,9 @@ nav.scrolled {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 10px 14px;
+  gap: 10px 12px;
   font-size: 10px;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: rgba(250, 249, 246, 0.72);
   margin-top: 0;
@@ -1451,15 +1451,21 @@ section.services { padding-top: 120px; padding-bottom: 88px; }
   .hero-tag {
     justify-content: center;
     padding-left: 0;
-    gap: 8px 11px;
-    font-size: 9px;
-    letter-spacing: 0.14em;
+    gap: 8px 10px;
+    row-gap: 8px;
+    font-size: 8.5px;
+    letter-spacing: 0.12em;
+    max-width: 100%;
   }
-  /* Drop the divider before Nonprofit; put Nonprofit on its own centered row */
-  .hero-tag > span:nth-child(6) { display: none; }
-  .hero-tag > span:last-child {
+  /* Break after Culture → row 1: Commercial · Hospitality · Culture
+     row 2: Nonprofit · Athlete (both rows centered) */
+  .hero-tag > .hero-tag-div:nth-child(6) {
     flex: 0 0 100%;
-    text-align: center;
+    width: 100%;
+    height: 0;
+    margin: 0;
+    background: transparent;
+    overflow: hidden;
   }
   .hero-scroll { top: 88px; bottom: auto; right: 16px; }
   .hero-arrow { width: 32px; height: 32px; }
@@ -2007,6 +2013,8 @@ html[data-font="gallery"] :is(.hero-tag, .section-label, .work-panel-explore) {
       <span>Culture</span>
       <span class="hero-tag-div" aria-hidden="true"></span>
       <span>Nonprofit</span>
+      <span class="hero-tag-div" aria-hidden="true"></span>
+      <span>Athlete</span>
     </div>
   </div>
   <div class="hero-scroll hero-scroll-anim">
@@ -2081,32 +2089,7 @@ html[data-font="gallery"] :is(.hero-tag, .section-label, .work-panel-explore) {
   </div>
 
   <div class="work-accordion reveal">
-
-    <div class="work-panel" data-index="0" data-href="projects.html">
-      <div class="work-panel-img">
-        <img src="assets/gallery/airkauai-7965.jpg" alt="Air Kauai" loading="lazy" decoding="async">
-      </div>
-      <div class="work-panel-gradient"></div>
-      <div class="work-panel-label">Nonprofit</div>
-      <div class="work-panel-info">
-        <div class="work-panel-title">Nonprofit</div>
-        <div class="work-panel-explore">Explore</div>
-      </div>
-    </div>
-
-    <div class="work-panel" data-index="1" data-href="projects.html">
-      <div class="work-panel-img">
-        <img src="assets/gallery/skyline-hawaii-2014.jpg" alt="Skyline Hawaii" loading="lazy" decoding="async">
-      </div>
-      <div class="work-panel-gradient"></div>
-      <div class="work-panel-label">Culture</div>
-      <div class="work-panel-info">
-        <div class="work-panel-title">Culture</div>
-        <div class="work-panel-explore">Explore</div>
-      </div>
-    </div>
-
-    <div class="work-panel active" data-index="2" data-href="projects.html">
+    <div class="work-panel active" data-index="0" data-href="projects.html">
       <div class="work-panel-img">
         <img src="assets/gallery/melin-9421.jpg" alt="Melin" loading="lazy" decoding="async">
       </div>
@@ -2118,26 +2101,50 @@ html[data-font="gallery"] :is(.hero-tag, .section-label, .work-panel-explore) {
       </div>
     </div>
 
-    <div class="work-panel" data-index="3" data-href="projects.html">
+    <div class="work-panel" data-index="1" data-href="projects.html">
       <div class="work-panel-img">
-        <img src="assets/gallery/bluesmiths-2547.jpg" alt="Coastal lifestyle portrait, Maui" loading="lazy" decoding="async">
+        <img src="assets/gallery/Malumanu Cabin-1995.jpg" alt="Hospitality property, Maui" loading="lazy" decoding="async">
       </div>
       <div class="work-panel-gradient"></div>
-      <div class="work-panel-label">Sport</div>
+      <div class="work-panel-label">Hospitality</div>
       <div class="work-panel-info">
-        <div class="work-panel-title">Sport</div>
+        <div class="work-panel-title">Hospitality</div>
+        <div class="work-panel-explore">Explore</div>
+      </div>
+    </div>
+
+    <div class="work-panel" data-index="2" data-href="projects.html">
+      <div class="work-panel-img">
+        <img src="assets/gallery/skyline-hawaii-2014.jpg" alt="Skyline Hawaii" loading="lazy" decoding="async">
+      </div>
+      <div class="work-panel-gradient"></div>
+      <div class="work-panel-label">Culture</div>
+      <div class="work-panel-info">
+        <div class="work-panel-title">Culture</div>
+        <div class="work-panel-explore">Explore</div>
+      </div>
+    </div>
+
+    <div class="work-panel" data-index="3" data-href="projects.html">
+      <div class="work-panel-img">
+        <img src="assets/gallery/airkauai-7965.jpg" alt="Air Kauai" loading="lazy" decoding="async">
+      </div>
+      <div class="work-panel-gradient"></div>
+      <div class="work-panel-label">Nonprofit</div>
+      <div class="work-panel-info">
+        <div class="work-panel-title">Nonprofit</div>
         <div class="work-panel-explore">Explore</div>
       </div>
     </div>
 
     <div class="work-panel" data-index="4" data-href="projects.html">
       <div class="work-panel-img">
-        <img src="assets/gallery/waihee-6178.jpg" alt="Waihe'e Valley" loading="lazy" decoding="async">
+        <img src="assets/gallery/bluesmiths-2547.jpg" alt="Athlete portrait, Maui" loading="lazy" decoding="async">
       </div>
       <div class="work-panel-gradient"></div>
-      <div class="work-panel-label">Event</div>
+      <div class="work-panel-label">Athlete</div>
       <div class="work-panel-info">
-        <div class="work-panel-title">Event</div>
+        <div class="work-panel-title">Athlete</div>
         <div class="work-panel-explore">Explore</div>
       </div>
     </div>
@@ -2245,7 +2252,7 @@ html[data-font="gallery"] :is(.hero-tag, .section-label, .work-panel-explore) {
   </div>
   <div class="who-right reveal reveal-delay-2">
     <p class="who-body">
-      Based on Maui, we photograph for brands that want a place to feel true — hospitality and culture, commercial campaigns, nonprofit work that belongs here. Polished where it counts, always grounded in presence.
+      Based on Maui, we photograph for brands that want a place to feel true — commercial, hospitality, culture, nonprofit, and athlete work that belongs here. Polished where it counts, always grounded in presence.
     </p>
   </div>
 </section>
@@ -3155,7 +3162,7 @@ function renderMosaicColumns(byKey) {
 }
 
 function renderWorkPanels(byKey) {
-  const categoryByIndex = ['work-nonprofit', 'work-culture', 'work-commercial', 'work-sport', 'work-event'];
+  const categoryByIndex = ['work-commercial', 'work-hospitality', 'work-culture', 'work-nonprofit', 'work-athlete'];
   document.querySelectorAll('.work-panel[data-index]').forEach((panel) => {
     const key = categoryByIndex[Number(panel.dataset.index)];
     const gallery = byKey[key];
