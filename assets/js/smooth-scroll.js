@@ -26,4 +26,6 @@
   requestAnimationFrame(raf);
 
   window.__lenis = lenis;
+  // Land on hero after Lenis boots (overrides browser scroll restore)
+  lenis.scrollTo(0, { immediate: true });
 })();

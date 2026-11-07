@@ -1925,6 +1925,29 @@ html[data-font="gallery"] :is(.hero-tag, .section-label, .work-panel-explore) {
   text-transform: uppercase !important;
 }
 </style>
+<script>
+/* Always open on the hero — don't restore prior scroll on refresh */
+(function () {
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  try {
+    var nav = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+    if (nav && nav.type === 'reload' && location.hash) {
+      history.replaceState(null, '', location.pathname + location.search);
+    }
+  } catch (e) {}
+  function toHero() {
+    var lenis = window.__lenis;
+    if (lenis) lenis.scrollTo(0, { immediate: true });
+    else window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }
+  toHero();
+  window.addEventListener('DOMContentLoaded', toHero);
+  window.addEventListener('load', toHero);
+  window.addEventListener('pageshow', function () { toHero(); });
+})();
+</script>
 </head>
 <body>
 
